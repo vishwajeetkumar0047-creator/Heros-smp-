@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel | HEROS SMP</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+<script>
+    /* Apply saved theme before page paints (no white flash) */
+    try {
+        if (localStorage.getItem("sparkTheme") === "dark") {
+            document.body.classList.add("dark");
+        }
+    } catch (error) {}
+</script>
+
+
+    <nav class="navbar">
+
+        <!-- Hamburger -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <img
+                    src="images/logo.png"
+                    alt="HEROS SMP"
+                >
+
+            </a>
+
+        </div>
+
+
+        <!-- Desktop Menu -->
+
+        <div class="nav-menu">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="rules.html">
+        Rules
+    </a>
+
+    <a href="forms.html">
+        Forms
+    </a>
+
+    <a href="staff.html">
+        Staff
+    </a>
+
+</div>
+
+
+        <!-- Right -->
+
+        <div class="nav-right">
+
+            <!-- Theme -->
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                aria-label="Toggle theme"
+            >
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
+
+            <!-- Store -->
+
+            <a href="store.html" class="store-btn">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span>
+                    Store
+                </span>
+
+            </a>
+
+
+            <!-- Login -->
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <div class="mobile-menu-heading">
+                Menu
+            </div>
+
+            <a href="index.html">
+    <i class="fa-solid fa-house"></i>
+                 Home
+                </a>
+
+            <a href="rules.html">
+                <i class="fa-solid fa-file"></i>
+                Rules
+            </a>
+
+            <a href="forms.html">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Forms
+            </a>
+
+            <a href="staff.html">
+                <i class="fa-solid fa-user-shield"></i>
+                Staff
+            </a>
+
+            <div class="mobile-menu-divider"></div>
+
+            <div class="mobile-menu-heading">
+                Account
+            </div>
+
+            <a href="login.html" id="mobileLoginBtn">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =================================
+         ADMIN PANEL
+         (sirf admin email wala user - js/admin.js)
+    ================================== -->
+
+    <section class="admin-section">
+
+        <div class="admin-heading">
+
+            <span class="admin-small">
+                HEROS SMP
+            </span>
+
+            <h1 class="admin-title">
+                Admin Panel
+            </h1>
+
+        </div>
+
+
+        <!-- Login / access message -->
+
+        <div class="admin-gate" id="adminGate">
+
+            <p>Checking access...</p>
+
+        </div>
+
+
+        <!-- Panel (sirf admin ko dikhta hai) -->
+
+        <div id="adminApp" hidden>
+
+            <div class="admin-tabs">
+
+                <button type="button" class="admin-tab active" data-tab="staff">
+                    <i class="fa-solid fa-user-shield"></i> Staff
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="store">
+                    <i class="fa-solid fa-bag-shopping"></i> Store
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="orders" id="ordersTab">
+                    <i class="fa-solid fa-receipt"></i> <span id="ordersTabLabel">Orders</span>
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="dashboard">
+                    <i class="fa-solid fa-chart-line"></i> Dashboard
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="coupons">
+                    <i class="fa-solid fa-ticket"></i> Coupons
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="forms">
+                    <i class="fa-solid fa-clipboard-list"></i> Forms
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="rules">
+                    <i class="fa-solid fa-scroll"></i> Rules
+                </button>
+
+                <button type="button" class="admin-tab" data-tab="logo">
+                    <i class="fa-solid fa-gear"></i> Site
+                </button>
+
+            </div>
+
+        <div class="admin-panel" id="panel-staff">
+
+            <div class="admin-card">
+
+                <h2 id="staffFormTitle">Add staff member</h2>
+
+                <form id="staffForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field">
+                        <label>Player name</label>
+                        <input type="text" name="player_name" maxlength="32" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Role</label>
+                        <select name="role" required>
+                            <option value="founder">Founder</option>
+                            <option value="owner">Owner</option>
+                            <option value="administrator">Administrator</option>
+                            <option value="manager">Manager</option>
+                            <option value="moderator">Moderator</option>
+                            <option value="helper">Helper</option>
+                            <option value="staff">Staff</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+                    <div class="admin-field">
+                        <label>Sort order</label>
+                        <input type="number" name="sort_order" value="0" step="1" min="0">
+                    </div>
+                    <div class="admin-field wide" data-image-picker data-folder="staff">
+                        <label>Skin image (optional)</label>
+                        <div class="admin-image-picker">
+
+                            <div class="admin-image-preview">
+                                <img alt="Preview" hidden>
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+
+                            <div class="admin-image-controls">
+
+                                <div class="admin-image-buttons">
+
+                                    <input type="file" accept="image/*" data-file hidden>
+
+                                    <button type="button" class="admin-btn small secondary" data-choose>
+                                        <i class="fa-solid fa-upload"></i> Choose from gallery
+                                    </button>
+
+                                    <button type="button" class="admin-btn small danger" data-clear hidden>
+                                        Remove image
+                                    </button>
+
+                                </div>
+
+                                <input type="text" name="skin_url" placeholder="or paste an image link">
+
+                                <small class="admin-image-status" aria-live="polite"></small>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Add</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Staff list</h2>
+
+                <div class="admin-list" id="staffRows"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-panel" id="panel-store" hidden>
+
+            <div class="admin-card">
+
+                <h2 id="storeFormTitle">Add store item</h2>
+
+                <form id="storeForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field">
+                        <label>Item name</label>
+                        <input type="text" name="name" maxlength="80" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Price</label>
+                        <input type="number" name="price" step="0.01" min="0" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Category (optional)</label>
+                        <input type="text" name="category" maxlength="40" placeholder="Ranks, Keys, Crates...">
+                    </div>
+                    <div class="admin-field">
+                        <label>Sort order</label>
+                        <input type="number" name="sort_order" value="0" step="1" min="0">
+                    </div>
+                    <div class="admin-field wide" data-image-picker data-folder="store">
+                        <label>Item image (optional)</label>
+                        <div class="admin-image-picker">
+
+                            <div class="admin-image-preview">
+                                <img alt="Preview" hidden>
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+
+                            <div class="admin-image-controls">
+
+                                <div class="admin-image-buttons">
+
+                                    <input type="file" accept="image/*" data-file hidden>
+
+                                    <button type="button" class="admin-btn small secondary" data-choose>
+                                        <i class="fa-solid fa-upload"></i> Choose from gallery
+                                    </button>
+
+                                    <button type="button" class="admin-btn small danger" data-clear hidden>
+                                        Remove image
+                                    </button>
+
+                                </div>
+
+                                <input type="text" name="image_url" placeholder="or paste an image link">
+
+                                <small class="admin-image-status" aria-live="polite"></small>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Description (optional)</label>
+                        <textarea name="description" rows="3" maxlength="500"></textarea>
+                    </div>
+                    <div class="admin-field wide">
+                        <label class="admin-check">
+                            <input type="checkbox" name="is_active" checked>
+                            <span>Show this item in the store</span>
+                        </label>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Add</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Store items</h2>
+
+                <div class="admin-list" id="storeRows"></div>
+
+            </div>
+
+            <div class="admin-card" id="galleryDetail" hidden>
+
+                <div class="admin-detail-head">
+
+                    <h2>Gallery: <span id="galleryItemName"></span></h2>
+
+                    <button type="button" class="admin-btn small secondary" id="galleryClose">Close</button>
+
+                </div>
+
+                <p class="admin-note">
+                    Cover image (item form mein set hoti hai) sabse pehle dikhti hai, uske baad yahan ki images
+                    upload ke order mein. Ek saath kai images chun sakte ho.
+                </p>
+
+                <div class="admin-form-actions">
+
+                    <input type="file" accept="image/*" multiple hidden id="galleryFile">
+
+                    <button type="button" class="admin-btn" id="galleryAdd">
+                        <i class="fa-solid fa-upload"></i> Add images from gallery
+                    </button>
+
+                </div>
+
+                <small class="admin-image-status" id="galleryStatus" aria-live="polite"></small>
+
+                <div class="admin-gallery-grid" id="galleryGrid"></div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="admin-panel" id="panel-orders" hidden>
+
+            <div class="admin-card">
+
+                <h2>Discord notifications</h2>
+
+                <p class="admin-note">
+                    Jab bhi koi order place hoga, uski detail aapke Discord channel par aayegi.
+                    Webhook banane ke liye Discord mein: Server Settings &rarr; Integrations &rarr;
+                    Webhooks &rarr; New Webhook &rarr; channel chuno &rarr; Copy Webhook URL.
+                    Phir URL yahan paste karo. URL secret rehta hai, website use padh nahi sakti.
+                </p>
+
+                <div class="admin-discord-status" id="discordStatus">Checking...</div>
+
+                <form id="discordForm">
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-field wide">
+                            <label>Webhook URL</label>
+                            <input type="password" name="webhook" autocomplete="off" placeholder="https://discord.com/api/webhooks/...">
+                        </div>
+
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Save webhook</button>
+
+                        <button type="button" class="admin-btn secondary" id="discordTest" hidden>Send test message</button>
+
+                        <button type="button" class="admin-btn danger" id="discordClear" hidden>Disconnect</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Payment details</h2>
+
+                <p class="admin-note">
+                    Checkout page par users ko ye UPI ID / QR dikhta hai. Jab tak kuch set nahi hoga,
+                    checkout mein "payment details not set up" dikhega.
+                </p>
+
+                <form id="paymentForm">
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-field">
+                            <label>UPI ID</label>
+                            <input type="text" name="payment_upi_id" maxlength="100" placeholder="name@bank" autocomplete="off">
+                        </div>
+
+                        <div class="admin-field wide">
+                            <label>Payment note (optional)</label>
+                            <textarea name="payment_note" rows="3" maxlength="400" placeholder="e.g. Pay the exact amount. Do not write anything in the payment remark."></textarea>
+                        </div>
+
+                        <div class="admin-field wide" data-image-picker data-folder="payment">
+                            <label>QR code image (optional)</label>
+                            <div class="admin-image-picker">
+
+                                <div class="admin-image-preview">
+                                    <img alt="Preview" hidden>
+                                    <i class="fa-solid fa-qrcode"></i>
+                                </div>
+
+                                <div class="admin-image-controls">
+
+                                    <div class="admin-image-buttons">
+
+                                        <input type="file" accept="image/*" data-file hidden>
+
+                                        <button type="button" class="admin-btn small secondary" data-choose>
+                                            <i class="fa-solid fa-upload"></i> Choose from gallery
+                                        </button>
+
+                                        <button type="button" class="admin-btn small danger" data-clear hidden>
+                                            Remove image
+                                        </button>
+
+                                    </div>
+
+                                    <input type="text" name="payment_qr_url" placeholder="or paste an image link">
+
+                                    <small class="admin-image-status" aria-live="polite"></small>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Save payment details</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <div class="admin-detail-head">
+
+                    <h2>Orders</h2>
+
+                    <select id="orderFilter" class="admin-inline-select">
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="all">All</option>
+                    </select>
+
+                </div>
+
+                <div class="admin-list" id="orderRows"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-panel" id="panel-dashboard" hidden>
+
+            <div class="admin-card">
+
+                <div class="admin-detail-head">
+
+                    <h2>Sales dashboard</h2>
+
+                    <select id="dashRange" class="admin-inline-select">
+                        <option value="7">Last 7 days</option>
+                        <option value="30" selected>Last 30 days</option>
+                        <option value="90">Last 90 days</option>
+                    </select>
+
+                </div>
+
+                <p class="admin-note">
+                    Sirf approved orders sales mein ginte hain (approve karne ki date ke hisaab se).
+                    Products ki revenue coupon discount se pehle ki hoti hai.
+                </p>
+
+                <div class="dash-stats" id="dashStats"></div>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Revenue per day</h2>
+
+                <div class="dash-chart" id="dashChart"></div>
+
+                <div class="dash-axis" id="dashAxis"></div>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Top products</h2>
+
+                <div class="admin-list" id="dashTop"></div>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Coupons used</h2>
+
+                <div class="admin-list" id="dashCoupons"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-panel" id="panel-coupons" hidden>
+
+            <p class="admin-note">
+                Coupon codes checkout par users lagate hain. Discount database mein check hota hai,
+                isliye koi user isse badal nahi sakta. Rejected orders ka coupon use dobara mil jata hai.
+            </p>
+
+            <div class="admin-card">
+
+                <h2 id="couponFormTitle">Create coupon</h2>
+
+                <form id="couponForm">
+
+                    <div class="admin-form-grid">
+                        <div class="admin-field">
+                            <label>Coupon code</label>
+                            <input type="text" name="code" maxlength="20" required pattern="[A-Za-z0-9_-]{3,20}" title="3-20 letters, numbers, - or _" placeholder="SAVE10" autocomplete="off" autocapitalize="characters">
+                        </div>
+                        <div class="admin-field">
+                            <label>Discount type</label>
+                            <select name="discount_type" required>
+                                <option value="percent">Percent (%)</option>
+                                <option value="fixed">Fixed amount</option>
+                            </select>
+                        </div>
+                        <div class="admin-field">
+                            <label>Discount value (% or amount)</label>
+                            <input type="number" name="value" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="admin-field">
+                            <label>Minimum order amount</label>
+                            <input type="number" name="min_order" step="0.01" min="0" value="0">
+                        </div>
+                        <div class="admin-field">
+                            <label>Max discount (optional)</label>
+                            <input type="number" name="max_discount" step="0.01" min="0.01" placeholder="No cap">
+                        </div>
+                        <div class="admin-field">
+                            <label>Total uses allowed (optional)</label>
+                            <input type="number" name="max_uses" step="1" min="1" placeholder="Unlimited">
+                        </div>
+                        <div class="admin-field">
+                            <label>Uses per user</label>
+                            <input type="number" name="per_user_limit" step="1" min="1" value="1" required>
+                        </div>
+                        <div class="admin-field">
+                            <label>Expires on (optional)</label>
+                            <input type="date" name="expires_on">
+                        </div>
+                        <div class="admin-field">
+                            <label class="admin-check">
+                                <input type="checkbox" name="is_active" checked>
+                                <span>Coupon is active</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Create</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Your coupons</h2>
+
+                <div class="admin-list" id="couponRows"></div>
+
+            </div>
+
+        </div>
+
+        <div class="admin-panel" id="panel-forms" hidden>
+
+            <p class="admin-note">
+                Yahan apne khud ke forms banao (Staff, Media Team ya kuch bhi).
+                Form banane ke baad <strong>Questions</strong> se sawal jodo aur
+                <strong>Responses</strong> se aaye hue jawab dekho.
+            </p>
+
+            <div class="admin-card">
+
+                <h2 id="formFormTitle">Create form</h2>
+
+                <form id="formForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field">
+                        <label>Form title</label>
+                        <input type="text" name="title" maxlength="80" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Link name (optional)</label>
+                        <input type="text" name="slug" maxlength="60" pattern="[a-z0-9]+(-[a-z0-9]+)*" title="Small letters, numbers and hyphens only" placeholder="auto from title">
+                    </div>
+                    <div class="admin-field">
+                        <label>Sort order</label>
+                        <input type="number" name="sort_order" value="0" step="1" min="0">
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Description shown on top (optional)</label>
+                        <textarea name="description" rows="3" maxlength="500"></textarea>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-check">
+                            <input type="checkbox" name="is_open" checked>
+                            <span>Form is open (people can apply)</span>
+                        </label>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-check">
+                            <input type="checkbox" name="require_login" checked>
+                            <span>Login required to submit</span>
+                        </label>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Create</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Your forms</h2>
+
+                <div class="admin-list" id="formRows"></div>
+
+            </div>
+
+            <div id="formDetail" hidden>
+
+                <div class="admin-card admin-detail-head">
+
+                    <h2>Managing: <span id="formDetailTitle"></span></h2>
+
+                    <button type="button" class="admin-btn small secondary" id="formDetailClose">Close</button>
+
+                </div>
+
+            <div class="admin-card" id="fieldFormCard">
+
+                <h2 id="fieldFormTitle">Add question</h2>
+
+                <form id="fieldForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field wide">
+                        <label>Question</label>
+                        <input type="text" name="label" maxlength="150" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Answer type</label>
+                        <select name="field_type" required>
+                            <option value="text">Short text</option>
+                            <option value="textarea">Long text (paragraph)</option>
+                            <option value="email">Email</option>
+                            <option value="number">Number</option>
+                            <option value="select">Dropdown</option>
+                            <option value="radio">Multiple choice</option>
+                            <option value="checkbox">Checkbox (yes / agree)</option>
+                        </select>
+                    </div>
+                    <div class="admin-field">
+                        <label>Sort order</label>
+                        <input type="number" name="sort_order" value="0" step="1" min="0">
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Options (only for Dropdown / Multiple choice)</label>
+                        <textarea name="options" rows="3" maxlength="600" placeholder="One option per line"></textarea>
+                    </div>
+                    <div class="admin-field">
+                        <label class="admin-check">
+                            <input type="checkbox" name="is_required">
+                            <span>Required question</span>
+                        </label>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Add</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+                <div class="admin-card">
+
+                    <h2>Questions</h2>
+
+                    <div class="admin-list" id="fieldRows"></div>
+
+                </div>
+
+                <div class="admin-card" id="responsesCard">
+
+                    <h2>Responses <span class="admin-meta" id="responseCount"></span></h2>
+
+                    <div class="admin-list" id="responseRows"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="admin-panel" id="panel-rules" hidden>
+
+            <div class="admin-card">
+
+                <h2>Rules page header</h2>
+
+                <form id="rulesHeaderForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field">
+                        <label>Small tag (top text)</label>
+                        <input type="text" name="rules_tag" maxlength="40">
+                    </div>
+                    <div class="admin-field">
+                        <label>Page title</label>
+                        <input type="text" name="rules_title" maxlength="80">
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Intro text</label>
+                        <textarea name="rules_intro" rows="3" maxlength="300"></textarea>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Save header</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2 id="categoryFormTitle">Add rule category</h2>
+
+                <form id="categoryForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field">
+                        <label>Category title</label>
+                        <input type="text" name="title" maxlength="60" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Sort order</label>
+                        <input type="number" name="sort_order" value="0" step="1" min="0">
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Short description (optional)</label>
+                        <input type="text" name="description" maxlength="200">
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Add</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Categories</h2>
+
+                <div class="admin-list" id="categoryRows"></div>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2 id="ruleFormTitle">Add rule</h2>
+
+                <form id="ruleForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field">
+                        <label>Category</label>
+                        <select name="category_id" id="ruleCategorySelect" required>
+                            <option value="">Select category</option>
+                        </select>
+                    </div>
+                    <div class="admin-field">
+                        <label>Sort order</label>
+                        <input type="number" name="sort_order" value="0" step="1" min="0">
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Rule title</label>
+                        <input type="text" name="title" maxlength="80" required>
+                    </div>
+                    <div class="admin-field wide">
+                        <label>Rule text</label>
+                        <textarea name="description" rows="3" maxlength="400"></textarea>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Add</button>
+
+                        <button type="button" class="admin-btn secondary" data-cancel hidden>Cancel</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Rules</h2>
+
+                <div class="admin-list" id="ruleRows"></div>
+
+            </div>
+
+        </div>
+
+        <div class="admin-panel" id="panel-logo" hidden>
+
+            <div class="admin-card">
+
+                <h2>Website logo</h2>
+
+                <p class="admin-note">
+                    Ye logo har page ke top navbar mein dikhta hai.
+                    Default logo par wapas jane ke liye "Remove image" dabao aur Save karo.
+                </p>
+
+                <form id="logoForm">
+
+                    <div class="admin-form-grid">
+                    <div class="admin-field wide" data-image-picker data-folder="logo">
+                        <label>Logo image</label>
+                        <div class="admin-image-picker">
+
+                            <div class="admin-image-preview">
+                                <img alt="Preview" hidden>
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+
+                            <div class="admin-image-controls">
+
+                                <div class="admin-image-buttons">
+
+                                    <input type="file" accept="image/*" data-file hidden>
+
+                                    <button type="button" class="admin-btn small secondary" data-choose>
+                                        <i class="fa-solid fa-upload"></i> Choose from gallery
+                                    </button>
+
+                                    <button type="button" class="admin-btn small danger" data-clear hidden>
+                                        Remove image
+                                    </button>
+
+                                </div>
+
+                                <input type="text" name="logo_url" placeholder="or paste an image link">
+
+                                <small class="admin-image-status" aria-live="polite"></small>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Save logo</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Server address</h2>
+
+                <p class="admin-note">
+                    Home page ka "Play now!" button ye IP copy karta hai, aur yahin se live players count aata hai
+                    (sirf Java servers ke liye). Java ke liye sirf IP kaafi hai. Bedrock ke liye port bhi chahiye,
+                    to neeche Bedrock port bhar do - copy hone par "IP:- ... / Port:- ..." dono aayenge.
+                    Khali chhod ke Save karoge to wo hat jayega.
+                </p>
+
+                <form id="serverForm">
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-field wide">
+                            <label>Server IP / address</label>
+                            <input type="text" name="server_ip" maxlength="100" placeholder="play.example.com" autocomplete="off" autocapitalize="off">
+                        </div>
+
+                        <div class="admin-field wide">
+                            <label>Bedrock port (optional)</label>
+                            <input type="text" name="bedrock_port" inputmode="numeric" maxlength="5" placeholder="19132" autocomplete="off">
+                        </div>
+
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Save server address</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Social links (footer)</h2>
+
+                <p class="admin-note">
+                    Footer ke Discord aur YouTube links. Jo link khali chhodoge wo footer se chhup jayega.
+                    Poora link daalo, jaise https://discord.gg/xxxxxx
+                </p>
+
+                <form id="socialForm">
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-field wide">
+                            <label>Discord invite link</label>
+                            <input type="text" name="discord_url" maxlength="200" placeholder="https://discord.gg/..." autocomplete="off" autocapitalize="off">
+                        </div>
+
+                        <div class="admin-field wide">
+                            <label>YouTube channel link</label>
+                            <input type="text" name="youtube_url" maxlength="200" placeholder="https://youtube.com/@..." autocomplete="off" autocapitalize="off">
+                        </div>
+
+                    </div>
+
+                    <div class="admin-form-actions">
+
+                        <button type="submit" class="admin-btn">Save social links</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+        </div>
+
+        <p class="admin-toast" id="adminToast" role="status" aria-live="polite"></p>
+
+    </section>
+
+
+    <footer
+        class="footer"
+        id="footer"
+    >
+
+        <div class="footer-top">
+
+
+            <!-- LOGO -->
+
+            <div>
+
+                <div class="footer-logo">
+                    herossmp
+                </div>
+
+            </div>
+
+
+
+            <!-- MENU -->
+
+            <div class="footer-column">
+
+                <h3>
+                    MENU
+                </h3>
+
+                <a href="rules.html">
+                    Rules
+                </a>
+
+                <a href="store.html">
+                    Store
+                </a>
+
+                <a href="forms.html">
+                    Forms
+                </a>
+
+
+                <div class="legal-column">
+
+                    <h3>
+                        LEGAL
+                    </h3>
+
+                    <a href="privacy.html">
+                        Privacy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SOCIALS -->
+
+            <div class="footer-column" hidden>
+
+                <h3>
+                    SOCIALS
+                </h3>
+
+                <a href="#" data-social="discord" hidden>
+                    Discord
+                </a>
+
+                <a href="#" data-social="youtube" hidden>
+                    YouTube
+                </a>
+
+            </div>
+
+
+
+            <!-- PEOPLE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    PEOPLE
+                </h3>
+
+                <a href="staff.html">
+                    Staff
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <p>
+                We are in no way affiliated with or endorsed
+                by Mojang, AB.
+            </p>
+
+            <p>
+                © 2026 HEROS SMP. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+
+    <script src="js/vendor/supabase.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/session.js"></script>
+
+</body>
+</html>

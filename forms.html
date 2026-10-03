@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forms | HEROS SMP</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+<script>
+    /* Apply saved theme before page paints (no white flash) */
+    try {
+        if (localStorage.getItem("sparkTheme") === "dark") {
+            document.body.classList.add("dark");
+        }
+    } catch (error) {}
+</script>
+
+
+    <nav class="navbar">
+
+        <!-- Hamburger -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <img
+                    src="images/logo.png"
+                    alt="HEROS SMP"
+                >
+
+            </a>
+
+        </div>
+
+
+        <!-- Desktop Menu -->
+
+        <div class="nav-menu">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="rules.html">
+        Rules
+    </a>
+
+    <a href="forms.html">
+        Forms
+    </a>
+
+    <a href="staff.html">
+        Staff
+    </a>
+
+</div>
+
+
+        <!-- Right -->
+
+        <div class="nav-right">
+
+            <!-- Theme -->
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                aria-label="Toggle theme"
+            >
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
+
+            <!-- Store -->
+
+            <a href="store.html" class="store-btn">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span>
+                    Store
+                </span>
+
+            </a>
+
+
+            <!-- Login -->
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <div class="mobile-menu-heading">
+                Menu
+            </div>
+
+            <a href="index.html">
+    <i class="fa-solid fa-house"></i>
+                 Home
+                </a>
+
+            <a href="rules.html">
+                <i class="fa-solid fa-file"></i>
+                Rules
+            </a>
+
+            <a href="forms.html">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Forms
+            </a>
+
+            <a href="staff.html">
+                <i class="fa-solid fa-user-shield"></i>
+                Staff
+            </a>
+
+            <div class="mobile-menu-divider"></div>
+
+            <div class="mobile-menu-heading">
+                Account
+            </div>
+
+            <a href="login.html" id="mobileLoginBtn">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =================================
+         FORMS LIST
+         (khule forms Supabase se aate hain - js/forms.js)
+    ================================== -->
+
+    <section class="forms-section">
+
+        <div class="forms-heading">
+
+            <span class="forms-small">
+                Join the team
+            </span>
+
+            <h1 class="forms-title">
+                Forms
+            </h1>
+
+        </div>
+
+        <div id="formsList">
+
+            <p class="forms-status">Loading forms...</p>
+
+        </div>
+
+    </section>
+
+
+    <footer
+        class="footer"
+        id="footer"
+    >
+
+        <div class="footer-top">
+
+
+            <!-- LOGO -->
+
+            <div>
+
+                <div class="footer-logo">
+                    herossmp
+                </div>
+
+            </div>
+
+
+
+            <!-- MENU -->
+
+            <div class="footer-column">
+
+                <h3>
+                    MENU
+                </h3>
+
+                <a href="rules.html">
+                    Rules
+                </a>
+
+                <a href="store.html">
+                    Store
+                </a>
+
+                <a href="forms.html">
+                    Forms
+                </a>
+
+
+                <div class="legal-column">
+
+                    <h3>
+                        LEGAL
+                    </h3>
+
+                    <a href="privacy.html">
+                        Privacy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SOCIALS -->
+
+            <div class="footer-column" hidden>
+
+                <h3>
+                    SOCIALS
+                </h3>
+
+                <a href="#" data-social="discord" hidden>
+                    Discord
+                </a>
+
+                <a href="#" data-social="youtube" hidden>
+                    YouTube
+                </a>
+
+            </div>
+
+
+
+            <!-- PEOPLE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    PEOPLE
+                </h3>
+
+                <a href="staff.html">
+                    Staff
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <p>
+                We are in no way affiliated with or endorsed
+                by Mojang, AB.
+            </p>
+
+            <p>
+                © 2026 HEROS SMP. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/vendor/supabase.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/session.js"></script>
+    <script src="js/forms.js"></script>
+
+</body>
+</html>

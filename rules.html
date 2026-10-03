@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HEROS SMP</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/rules.css">
+    
+    
+    <script>
+        /* Rules database se load hone tak (max 4 sec) content chhupa rehta hai */
+        document.documentElement.classList.add("rules-pending");
+        setTimeout(function () {
+            document.documentElement.classList.remove("rules-pending");
+        }, 4000);
+    </script>
+</head>
+
+
+<body>
+
+<script>
+    /* Apply saved theme before page paints (no white flash) */
+    try {
+        if (localStorage.getItem("sparkTheme") === "dark") {
+            document.body.classList.add("dark");
+        }
+    } catch (error) {}
+</script>
+
+
+    <!-- =================================
+         NAVBAR
+    ================================== -->
+
+    <nav class="navbar">
+
+        <!-- Hamburger -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <img
+                    src="images/logo.png"
+                    alt="HEROS SMP"
+                >
+
+            </a>
+
+        </div>
+
+
+        <!-- Desktop Menu -->
+
+        <div class="nav-menu">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="rules.html">
+        Rules
+    </a>
+
+    <a href="forms.html">
+        Forms
+    </a>
+
+    <a href="staff.html">
+        Staff
+    </a>
+
+</div>
+
+
+        <!-- Right -->
+
+        <div class="nav-right">
+
+            <!-- Theme -->
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                aria-label="Toggle theme"
+            >
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
+
+            <!-- Store -->
+
+            <a href="store.html" class="store-btn">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span>
+                    Store
+                </span>
+
+            </a>
+
+
+            <!-- Login -->
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <div class="mobile-menu-heading">
+                Menu
+            </div>
+
+            <a href="index.html">
+    <i class="fa-solid fa-house"></i>
+                 Home
+                </a>
+
+            <a href="rules.html">
+                <i class="fa-solid fa-file"></i>
+                Rules
+            </a>
+
+            <a href="forms.html">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Forms
+            </a>
+
+            <a href="staff.html">
+                <i class="fa-solid fa-user-shield"></i>
+                Staff
+            </a>
+
+            <div class="mobile-menu-divider"></div>
+
+            <div class="mobile-menu-heading">
+                Account
+            </div>
+
+            <a href="login.html" id="mobileLoginBtn">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+<section class="rules-section" id="rules">
+
+    <div class="rules-header">
+        <span class="rules-tag" id="rulesTag">SERVER RULES</span>
+        <h1 id="rulesTitle">Rules & Guidelines</h1>
+        <p id="rulesIntro">Please follow these rules to keep our server safe, fair and enjoyable for everyone.</p>
+    </div>
+
+    <div id="rulesList">
+
+    <!-- General Rules -->
+    <div class="rule-category">
+        <div class="category-title">
+            <span class="rule-number">01</span>
+            <div>
+                <h2>General Rules</h2>
+                <p>Basic rules every player must follow.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>Respect Everyone</h3>
+                <p>Treat all players, staff members and community members with respect.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>No Toxicity</h3>
+                <p>Harassment, bullying, excessive toxicity and personal attacks are not allowed.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>Follow Staff</h3>
+                <p>Follow reasonable instructions given by server staff.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>No Rule Evasion</h3>
+                <p>Do not attempt to bypass punishments or server restrictions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Rules -->
+    <div class="rule-category">
+        <div class="category-title">
+            <span class="rule-number">02</span>
+            <div>
+                <h2>Chat Rules</h2>
+                <p>Keep the server chat clean and friendly.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>No Spam</h3>
+                <p>Do not spam messages, commands, characters or repeated content.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>No Advertising</h3>
+                <p>Advertising other servers, websites or communities without permission is prohibited.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>No Abuse</h3>
+                <p>Insults, hate speech and inappropriate language directed at others are not allowed.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>No False Information</h3>
+                <p>Do not intentionally spread misleading information about the server or its players.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gameplay Rules -->
+    <div class="rule-category">
+        <div class="category-title">
+            <span class="rule-number">03</span>
+            <div>
+                <h2>Gameplay Rules</h2>
+                <p>Play fairly and respect other players.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>Play Fair</h3>
+                <p>Use legitimate gameplay methods and do not gain unfair advantages.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>No Exploiting</h3>
+                <p>Do not abuse bugs, glitches or unintended server mechanics.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>Respect Builds</h3>
+                <p>Do not intentionally destroy or interfere with another player's builds.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>No Unfair Traps</h3>
+                <p>Do not create traps designed to unfairly exploit or harass other players.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PvP Rules -->
+    <div class="rule-category">
+        <div class="category-title">
+            <span class="rule-number">04</span>
+            <div>
+                <h2>PvP Rules</h2>
+                <p>Keep PvP fair and enjoyable.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>No Unwanted PvP</h3>
+                <p>Do not repeatedly attack players who clearly do not want to participate in PvP.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>No Combat Abuse</h3>
+                <p>Do not abuse server mechanics to gain an unfair advantage during combat.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>No Spawn Killing</h3>
+                <p>Do not repeatedly target players immediately after they enter the server.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>Fair Fights</h3>
+                <p>Keep PvP competitive and avoid exploiting unfair advantages.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Griefing & Stealing -->
+    <div class="rule-category">
+        <div class="category-title">
+            <span class="rule-number">05</span>
+            <div>
+                <h2>Griefing & Stealing</h2>
+                <p>Protect other players and their property.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>No Griefing</h3>
+                <p>Do not destroy, modify or damage another player's property without permission.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>No Stealing</h3>
+                <p>Taking items from another player's storage without permission is prohibited.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>No Property Damage</h3>
+                <p>Do not intentionally damage farms, bases, builds or other player-owned areas.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>Respect Claims</h3>
+                <p>Respect protected areas and property belonging to other players.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exploiting & Cheating -->
+    <div class="rule-category">
+        <div class="category-title">
+            <span class="rule-number">06</span>
+            <div>
+                <h2>Exploiting & Cheating</h2>
+                <p>Any unfair advantage is strictly prohibited.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>No Hacked Clients</h3>
+                <p>Hacked clients or modifications that provide unfair advantages are not allowed.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>No Automation</h3>
+                <p>Do not use unauthorized bots, scripts or automation to gain an advantage.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>No Bug Abuse</h3>
+                <p>Report serious bugs to staff instead of using them for personal benefit.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>No Duplication</h3>
+                <p>Item duplication glitches or exploits must not be used or distributed.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Punishments -->
+    <div class="rule-category punishment-category">
+        <div class="category-title">
+            <span class="rule-number">07</span>
+            <div>
+                <h2>Punishments</h2>
+                <p>Breaking the rules may result in punishment.</p>
+            </div>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <span>01</span>
+                <h3>Warnings</h3>
+                <p>Minor violations may result in a warning from the staff team.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>02</span>
+                <h3>Mute</h3>
+                <p>Chat-related violations may result in temporary or permanent chat restrictions.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>03</span>
+                <h3>Temporary Ban</h3>
+                <p>Serious or repeated violations may result in a temporary ban.</p>
+            </div>
+
+            <div class="rule-card">
+                <span>04</span>
+                <h3>Permanent Ban</h3>
+                <p>Severe violations or repeated offenses may result in a permanent ban.</p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+  <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer
+        class="footer"
+        id="footer"
+    >
+
+        <div class="footer-top">
+
+
+            <!-- LOGO -->
+
+            <div>
+
+                <div class="footer-logo">
+                    herossmp
+                </div>
+
+            </div>
+
+
+
+            <!-- MENU -->
+
+            <div class="footer-column">
+
+                <h3>
+                    MENU
+                </h3>
+
+                <a href="rules.html">
+                    Rules
+                </a>
+
+                <a href="store.html">
+                    Store
+                </a>
+
+                <a href="forms.html">
+                    Forms
+                </a>
+
+
+                <div class="legal-column">
+
+                    <h3>
+                        LEGAL
+                    </h3>
+
+                    <a href="privacy.html">
+                        Privacy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SOCIALS -->
+
+            <div class="footer-column" hidden>
+
+                <h3>
+                    SOCIALS
+                </h3>
+
+                <a href="#" data-social="discord" hidden>
+                    Discord
+                </a>
+
+                <a href="#" data-social="youtube" hidden>
+                    YouTube
+                </a>
+
+            </div>
+
+
+
+            <!-- PEOPLE -->
+
+            <div class="footer-column">
+
+                <h3>
+                    PEOPLE
+                </h3>
+
+                <a href="staff.html">
+                    Staff
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <p>
+                We are in no way affiliated with or endorsed
+                by Mojang, AB.
+            </p>
+
+            <p>
+                © 2026 HEROS SMP. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+
+    <script>
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+
+        menuToggle.addEventListener("click", function () {
+
+            mobileMenu.classList.toggle("active");
+
+            const icon =
+                menuToggle.querySelector("i");
+
+
+            if (mobileMenu.classList.contains("active")) {
+
+                icon.classList.remove("fa-bars");
+
+                icon.classList.add("fa-xmark");
+
+            } else {
+
+                icon.classList.remove("fa-xmark");
+
+                icon.classList.add("fa-bars");
+
+            }
+
+        });
+
+
+
+        /* =========================
+           CLOSE MOBILE MENU
+        ========================= */
+
+        const mobileLinks =
+            mobileMenu.querySelectorAll("a");
+
+
+        mobileLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                mobileMenu.classList.remove("active");
+
+                const icon =
+                    menuToggle.querySelector("i");
+
+
+                icon.classList.remove("fa-xmark");
+
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+
+
+        /* =========================
+           CLOSE ON OUTSIDE TAP
+        ========================= */
+
+        document.addEventListener("click", function (e) {
+
+            const clickedInsideMenu =
+                mobileMenu.contains(e.target);
+
+            const clickedToggle =
+                menuToggle.contains(e.target);
+
+
+            if (
+                !clickedInsideMenu &&
+                !clickedToggle &&
+                mobileMenu.classList.contains("active")
+            ) {
+
+                mobileMenu.classList.remove("active");
+
+                const icon =
+                    menuToggle.querySelector("i");
+
+                icon.classList.remove("fa-xmark");
+
+                icon.classList.add("fa-bars");
+
+            }
+
+        });
+
+
+
+        /* =========================
+           THEME TOGGLE
+        ========================= */
+
+        const themeBtn =
+            document.getElementById("themeBtn");
+
+        const themeIcon =
+            themeBtn.querySelector("i");
+
+
+        /* Load saved theme */
+
+        let savedTheme = null;
+
+        try {
+            savedTheme = localStorage.getItem("sparkTheme");
+        } catch (error) {}
+
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark");
+
+            themeIcon.classList.remove("fa-sun");
+
+            themeIcon.classList.add("fa-moon");
+
+        }
+
+
+
+        /* Theme button */
+
+        themeBtn.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+
+            const isDark =
+                document.body.classList.contains("dark");
+
+
+            if (isDark) {
+
+                themeIcon.classList.remove("fa-sun");
+
+                themeIcon.classList.add("fa-moon");
+
+
+                try {
+                    localStorage.setItem("sparkTheme", "dark");
+                } catch (error) {}
+
+            } else {
+
+                themeIcon.classList.remove("fa-moon");
+
+                themeIcon.classList.add("fa-sun");
+
+
+                try {
+                    localStorage.setItem("sparkTheme", "light");
+                } catch (error) {}
+
+            }
+
+        });
+
+
+
+        /* =========================
+           ACTIVE NAV LINK
+        ========================= */
+
+        const allNavLinks =
+            document.querySelectorAll(
+                ".nav-menu a, .mobile-menu a:not(#mobileLoginBtn)"
+            );
+
+
+        function cleanPage(path) {
+
+            let page = path.split("#")[0].split("/").pop();
+
+            page = page.replace(/\.html$/, "");
+
+            return page === "" ? "index" : page;
+
+        }
+
+        const currentPage = cleanPage(window.location.pathname);
+
+        allNavLinks.forEach(function (link) {
+
+            if (cleanPage(link.getAttribute("href")) === currentPage) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+
+
+        /* =========================
+           PLAY BUTTON
+        ========================= */
+
+        const playButtons =
+            document.querySelectorAll(
+                ".play-btn, .final-play-btn"
+            );
+
+
+        playButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                alert("Welcome to HEROS SMP!");
+
+            });
+
+        });
+
+    </script>
+
+    <script src="js/vendor/supabase.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/rules.js"></script>
+    <script src="js/session.js"></script>
+
+</body>
+</html>
