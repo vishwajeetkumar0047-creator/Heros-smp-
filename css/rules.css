@@ -1,0 +1,177 @@
+.rules-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 100px 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rules-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.rules-tag {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #ff3030;
+}
+
+.rules-header h1 {
+    font-size: 52px;
+    font-weight: 900;
+    margin: 0 0 15px;
+}
+
+.rules-header p {
+    max-width: 650px;
+    margin: auto;
+    color: #777;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.rule-category {
+    margin-bottom: 75px;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.rule-number {
+    font-size: 18px;
+    font-weight: 900;
+    color: #ff3030;
+}
+
+.category-title h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.category-title p {
+    margin: 6px 0 0;
+    color: #888;
+    font-size: 14px;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.rule-card {
+    position: relative;
+    padding: 28px;
+    background: #f7f7f7;
+    border: 1px solid #e9e9e9;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: .3s ease;
+}
+
+.rule-card > span {
+    font-size: 12px;
+    font-weight: 900;
+    color: #aaa;
+}
+
+.rule-card h3 {
+    margin: 12px 0 8px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.rule-card p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.rule-card:hover {
+    transform: translateY(-6px);
+    border-color: #ff3030;
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+@media (max-width: 700px) {
+
+    .rules-section {
+        padding: 70px 18px;
+    }
+
+    .rules-header {
+        margin-bottom: 55px;
+    }
+
+    .rules-header h1 {
+        font-size: 36px;
+    }
+
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-title h2 {
+        font-size: 24px;
+    }
+
+    .rule-card {
+        padding: 23px;
+    }
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark .rules-header p,
+body.dark .category-title p,
+body.dark .rule-card p {
+    color: #aaa;
+}
+
+body.dark .rule-card {
+    background: #181818;
+    border-color: #303030;
+}
+
+body.dark .rule-card > span {
+    color: #777;
+}
+
+body.dark .rule-card:hover {
+    border-color: #ff3030;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .45);
+}
+
+
+/* Rules database se load hone tak chhupa rehta hai */
+
+.rules-pending .rules-section {
+    visibility: hidden;
+}
+
+.rules-empty {
+    padding: 40px 0;
+
+    color: #777;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+body.dark .rules-empty {
+    color: #aaa;
+}

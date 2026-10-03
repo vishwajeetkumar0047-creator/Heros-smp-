@@ -1,0 +1,423 @@
+/* =====================================
+   FORMS PAGES (forms.html + form.html)
+===================================== */
+
+/* ---------- forms.html ---------- */
+
+.forms-section {
+    width: 100%;
+
+    min-height: calc(100vh - 100px);
+
+    padding: 70px 5% 110px;
+
+    background: #fff;
+}
+
+.forms-heading {
+    margin-bottom: 55px;
+}
+
+.forms-small {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #c83e35;
+
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.forms-title {
+    color: #080808;
+
+    font-size: clamp(48px, 8vw, 110px);
+
+    line-height: .88;
+
+    letter-spacing: -4px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+.forms-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    gap: 25px;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+
+    padding: 32px 30px 30px;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+    border-radius: 30px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .06);
+
+    animation: formCardReveal .6s ease backwards;
+
+    transition:
+        transform .4s cubic-bezier(.2, .8, .2, 1),
+        box-shadow .4s ease,
+        border-color .4s ease;
+}
+
+.form-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .13);
+
+    border-color: #ef7068;
+}
+
+@keyframes formCardReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.form-card-icon {
+    width: 56px;
+    height: 56px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #fdecea;
+    color: #dc4035;
+
+    font-size: 24px;
+}
+
+.form-card h2 {
+    margin-bottom: 10px;
+
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.form-card p {
+    margin-bottom: 26px;
+
+    color: #666;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.form-card-btn {
+    margin-top: auto;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 56px;
+
+    border: 4px solid #ef7068;
+    border-radius: 18px;
+
+    background: #dc4035;
+    color: #fff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.form-card-btn:hover {
+    transform: translateY(-3px);
+}
+
+.forms-status {
+    padding: 60px 0;
+
+    color: #777;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+
+/* ---------- form.html ---------- */
+
+.apply-card {
+    max-width: 680px;
+}
+
+.apply-card .auth-title {
+    font-size: clamp(34px, 5vw, 50px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+.apply-card .auth-sub {
+    white-space: pre-line;
+}
+
+.apply-control {
+    width: 100%;
+
+    padding: 0 18px;
+
+    background: #fafafa;
+    color: #111;
+
+    border: 2px solid #e5e5e5;
+    border-radius: 18px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+input.apply-control,
+select.apply-control {
+    height: 58px;
+}
+
+textarea.apply-control {
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.apply-control:focus {
+    background: #fff;
+
+    border-color: #dc4035;
+
+    box-shadow: 0 0 0 4px rgba(220, 64, 53, .12);
+}
+
+.field.invalid .apply-control {
+    border-color: #dc4035;
+}
+
+.field label.check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin-bottom: 0;
+
+    font-weight: 500;
+}
+
+.apply-required {
+    color: #dc4035;
+}
+
+.apply-options {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.apply-note {
+    margin: 4px 0 22px;
+
+    color: #777;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.apply-gate {
+    text-align: center;
+}
+
+.apply-gate p {
+    margin-bottom: 22px;
+
+    color: #555;
+
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.apply-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.apply-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 54px;
+
+    padding: 0 28px;
+
+    border: 4px solid #ef7068;
+    border-radius: 18px;
+
+    background: #dc4035;
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.apply-link-btn:hover {
+    transform: translateY(-3px);
+}
+
+.apply-link-btn.secondary {
+    background: transparent;
+    color: #dc4035;
+}
+
+
+/* ---------- DARK MODE ---------- */
+
+body.dark .forms-section {
+    background: #101010;
+}
+
+body.dark .forms-title {
+    color: #fff;
+}
+
+body.dark .form-card {
+    background: #181818;
+
+    border-color: #303030;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .35);
+}
+
+body.dark .form-card:hover {
+    border-color: #ef7068;
+
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .5);
+}
+
+body.dark .form-card-icon {
+    background: #3b1917;
+    color: #ff9a92;
+}
+
+body.dark .form-card h2 {
+    color: #fff;
+}
+
+body.dark .form-card p,
+body.dark .forms-status,
+body.dark .apply-note,
+body.dark .apply-gate p {
+    color: #aaa;
+}
+
+body.dark .apply-control {
+    background: #222;
+    color: #fff;
+
+    border-color: #333;
+}
+
+body.dark .apply-control:focus {
+    background: #262626;
+
+    border-color: #ef7068;
+
+    box-shadow: 0 0 0 4px rgba(239, 112, 104, .18);
+}
+
+body.dark .field.invalid .apply-control {
+    border-color: #ef7068;
+}
+
+body.dark .apply-link-btn.secondary {
+    color: #ef7068;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 992px) {
+
+    .forms-section {
+        min-height: calc(100vh - 90px);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .forms-section {
+        padding: 45px 20px 80px;
+    }
+
+    .forms-heading {
+        margin-bottom: 40px;
+    }
+
+    .forms-small {
+        font-size: 18px;
+    }
+
+    .forms-title {
+        letter-spacing: -2px;
+    }
+
+    .forms-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .form-card {
+        animation: none;
+    }
+
+}

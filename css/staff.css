@@ -1,0 +1,432 @@
+/* =========================
+   STAFF INFO
+========================= */
+
+.staff-section{
+    width:100%;
+    padding:60px 5% 100px;
+    background:#fff;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.staff-category{
+    margin-bottom:90px;
+
+    animation:categoryReveal .8s ease backwards;
+}
+
+.staff-category:nth-child(1){
+    animation-delay:.1s;
+}
+
+.staff-category:nth-child(2){
+    animation-delay:.25s;
+}
+
+.staff-category:nth-child(3){
+    animation-delay:.4s;
+}
+
+.staff-category:nth-child(4){
+    animation-delay:.55s;
+}
+
+
+/* =========================
+   CATEGORY TITLE
+========================= */
+
+.category-title{
+    margin-bottom:35px;
+
+    font-size:42px;
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    animation:titleReveal .7s ease backwards;
+}
+
+.category-title span{
+    color:#df4036;
+
+    display:inline-block;
+
+    transition:.3s ease;
+}
+
+.category-title:hover span{
+    transform:translateX(5px);
+}
+
+
+/* =========================
+   STAFF GRID
+========================= */
+
+.staff-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+}
+
+
+/* =========================
+   STAFF CARD
+========================= */
+
+.staff-card{
+    min-height:330px;
+
+    padding:35px 25px;
+
+    background:#fff;
+
+    border:1px solid #ddd;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.06);
+
+    overflow:hidden;
+
+    animation:cardReveal .7s ease backwards;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        box-shadow .4s ease,
+        border-color .4s ease;
+}
+
+
+/* CARD DELAY */
+
+.staff-card:nth-child(1){
+    animation-delay:.25s;
+}
+
+.staff-card:nth-child(2){
+    animation-delay:.4s;
+}
+
+.staff-card:nth-child(3){
+    animation-delay:.55s;
+}
+
+.staff-card:nth-child(4){
+    animation-delay:.7s;
+}
+
+
+/* =========================
+   CARD HOVER
+========================= */
+
+.staff-card:hover{
+
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.13);
+
+    border-color:#ef7068;
+}
+
+
+/* =========================
+   SKIN
+========================= */
+
+.staff-skin{
+    width:150px;
+    height:150px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#f2f2f2;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    transition:
+        transform .45s ease,
+        border-radius .45s ease;
+}
+
+
+/* SKIN IMAGE */
+
+.staff-skin img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* SKIN HOVER */
+
+.staff-card:hover .staff-skin{
+    transform:translateY(-5px);
+
+    border-radius:28px;
+}
+
+.staff-card:hover .staff-skin img{
+    transform:scale(1.08);
+}
+
+
+/* =========================
+   NAME
+========================= */
+
+.staff-name{
+    font-size:25px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+    transition:
+        transform .35s ease,
+        color .35s ease;
+}
+
+.staff-card:hover .staff-name{
+    transform:translateY(-3px);
+}
+
+
+/* =========================
+   ROLE
+========================= */
+
+.staff-role{
+    color:#df4036;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    transition:
+        transform .35s ease,
+        letter-spacing .35s ease;
+}
+
+.staff-card:hover .staff-role{
+    transform:translateY(-2px);
+
+    letter-spacing:.5px;
+}
+
+
+/* =========================
+   ANIMATION KEYFRAMES
+========================= */
+
+@keyframes categoryReveal{
+
+    0%{
+        opacity:0;
+        transform:translateY(45px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes titleReveal{
+
+    0%{
+        opacity:0;
+        transform:translateX(-35px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+
+@keyframes cardReveal{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(35px)
+            scale(.97);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark .staff-section{
+    background:#101010;
+}
+
+body.dark .category-title{
+    color:#fff;
+}
+
+body.dark .staff-card{
+    background:#181818;
+
+    border-color:#303030;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35);
+}
+
+body.dark .staff-card:hover{
+    border-color:#ef7068;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.5);
+}
+
+body.dark .staff-name{
+    color:#fff;
+}
+
+body.dark .staff-skin{
+    background:#222;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    .staff-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:850px){
+
+    .staff-section{
+        padding:40px 20px 70px;
+    }
+
+    .category-title{
+        font-size:32px;
+    }
+
+    .staff-grid{
+        grid-template-columns:1fr;
+
+        gap:20px;
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .category-title{
+        font-size:28px;
+    }
+
+    .staff-skin{
+        width:130px;
+        height:130px;
+    }
+
+    .staff-card{
+        min-height:310px;
+    }
+
+}
+
+
+/* =========================
+   REDUCE MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .staff-category,
+    .category-title,
+    .staff-card{
+
+        animation:none;
+
+        opacity:1;
+
+        transform:none;
+    }
+
+    .staff-card,
+    .staff-skin,
+    .staff-skin img,
+    .staff-name,
+    .staff-role{
+
+        transition:none;
+    }
+
+}
+
+
+/* =========================
+   LOADING / EMPTY / ERROR MESSAGE
+========================= */
+
+.data-status{
+    padding:60px 0;
+
+    color:#777;
+
+    font-size:18px;
+
+    text-align:center;
+}
+
+body.dark .data-status{
+    color:#aaa;
+}
